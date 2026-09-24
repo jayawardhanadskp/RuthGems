@@ -1,0 +1,39 @@
+import Image from "next/image";
+import { SectionHeading } from "@/components/common/section-heading";
+import { Reveal, StaggerGrid, StaggerItem } from "@/components/motion/reveal";
+
+const images = [
+  "/images/home/gift-1.png",
+  "/images/home/gift-2.png",
+  "/images/home/gift-3.png",
+];
+
+export function GiftBanner() {
+  return (
+    <section className="bg-[#f5faf9] py-16 sm:py-20">
+      <div className="container-page flex flex-col gap-8">
+        <Reveal>
+          <SectionHeading
+            eyebrow="A Gift from Ceylon"
+            title="Give the Gift of a Ceylon Sapphire"
+          />
+        </Reveal>
+        <StaggerGrid className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {images.map((src) => (
+            <StaggerItem key={src}>
+              <div className="relative h-[280px] w-full overflow-hidden rounded-xl sm:h-[358px]">
+                <Image
+                  src={src}
+                  alt="A gift of Ceylon sapphire"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerGrid>
+      </div>
+    </section>
+  );
+}
